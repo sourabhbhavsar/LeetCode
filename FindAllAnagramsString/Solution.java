@@ -78,9 +78,7 @@ class Solution {
             }
             else {
                 sub = s.substring(i);
-            }
-            
-            
+            }      
             
             if (isAnagram(sub, p)) {
                 out.add(i);
