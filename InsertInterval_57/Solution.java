@@ -42,7 +42,6 @@ class Solution {
         return intersection;
     }
     
-    
     public boolean hasIntersection(int[] in1, int[] in2) {
         return (in1[0] >= in2[0] && in1[0] <= in2[1]) ||
                 (in2[0] >= in1[0] && in2[0] <= in1[1]);
