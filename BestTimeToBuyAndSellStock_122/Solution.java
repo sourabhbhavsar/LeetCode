@@ -3,9 +3,46 @@ class Solution {
         // int[] memo = new int[prices.length];
         // Arrays.fill(memo, -1);
         
-        return maxProfitBU(prices);
+        if (prices == null || prices.length <= 1) {
+            return 0;
+        }
+        
+        int n = prices.length;
+        int buy = 0;
+        int sell = 0;
+        int profit = 0;
+        int i = 0;
+        int j = 0;
+        
+        while (i < n && j < n) {
+            // find the valley of prices i.e the smallest in a decresing streak.
+            while (i + i < n && prices[i + 1] < prices[i]) {
+                i++;
+            }
+            
+            buy = prices[i];
+            
+            // find the peak of prices i.e the highest in a increasing streak coming after i.
+            j = i;
+            while (j + 1 < n && prices[j + 1] > prices[j]) {
+                j++;
+            }
+            
+            sell = prices[j];
+            profit = profit + (sell - buy);
+            
+            i = j + 1;
+        }
+        
+        return profit;
+        
+        // return maxProfitBU(prices);
         //return maxProfitDP(prices, prices.length - 1, memo);
     }
+    
+    
+    
+    
     
     public int maxProfitBU(int[] prices) {
         int[] table = new int[prices.length];
